@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Teacher Profile - Department of Computer Engineering</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #f9f9f9, #e6f0ff);
+      color: #333;
+    }
+
+    .department-header {
+      background: linear-gradient(to right, #1f264c, #800020);
+      color: white;
+      padding: 25px 20px;
+      font-size: 24px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .department-header img {
+      width: 60px;
+      height: 60px;
+    }
+
+    .navbar {
+      background-color: #354f9d;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #ffd700;
+    }
+
+    .home-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 40px;
+      background-color: #ffffff;
+    }
+
+    .image-box img {
+      max-width: 280px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      margin-right: 40px;
+    }
+
+    .badges-box {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-left: 20px;
+      margin-top: 10px;
+    }
+
+    .badge {
+      background: linear-gradient(135deg, #ffe6e6, #fff);
+      border-left: 6px solid #800020;
+      padding: 10px 14px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      font-size: 15px;
+      font-weight: 500;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-box {
+      max-width: 550px;
+      font-size: 20px;
+      line-height: 1.6;
+    }
+
+    .info-box h2 {
+      font-size: 40px;
+      margin-bottom: 8px;
+      color: #1f264c;
+    }
+
+    .info-box h3 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #800020;
+    }
+
+    section {
+      padding: 50px 40px;
+    }
+
+    .glass-box {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+
+    .section-title {
+      font-size: 30px;
+      color: #003366;
+      border-bottom: 3px solid #800020;
+      padding-bottom: 12px;
+      margin-bottom: 25px;
+    }
+
+    .certifications-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .cert-card {
+      background: #f5f5f5;
+      padding: 20px;
+      border-radius: 12px;
+      font-size: 18px;
+      flex: 1 1 300px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .cert-card:hover {
+      transform: scale(1.05);
+      background: #e6f0ff;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .popup img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(255,255,255,0.2);
+    }
+
+    /* Updated Teaching Subjects Style */
+    .subjects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .subject-card {
+      background: #ffffff;
+      border-left: 6px solid #354f9d;
+      padding: 16px 20px;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #1f264c;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+      transition: background 0.3s ease;
+    }
+
+    .subject-card:hover {
+      background: #f0f7ff;
+    }
+
+    .subject-card a {
+      color: #0a66c2;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .subject-card a:hover {
+      text-decoration: underline;
+    }
+
+    /* Updated Contact Styles */
+    .contact-section {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .contact-section .info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 18px;
+      background: #ffffff;
+      padding: 14px 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.07);
+      transition: background 0.3s ease;
+    }
+
+    .contact-section .info:hover {
+      background: #f4f9ff;
+    }
+
+    .contact-section i {
+      color: #800020;
+      font-size: 22px;
+    }
+
+    .contact-section a {
+      color: #003366;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-section a:hover {
+      text-decoration: underline;
+    }
+
+    .float-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #0a66c2;
+      color: white;
+      padding: 12px 14px;
+      border-radius: 50%;
+      font-size: 22px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      z-index: 1000;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="department-header">
+    <img src="jspm.logo.jpeg.png" alt="JSPM Logo">
+    <h1>Department of Computer Engineering</h1>
+  </div>
+
+  <nav class="navbar">
+    <a href="#">Home</a>
+    <a href="#personal-info">Personal Information</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#subjects">Teaching Subjects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="home-section" data-aos="fade-up">
+    <div style="display: flex; align-items: center;">
+      <div class="image-box">
+        <img src="RadhikaB.jpeg.jpg" alt="Teacher Image">
+      </div>
+      <div class="badges-box">
+        <div class="badge">🎓 M.Tech – Power Electronics</div>
+        <div class="badge">👩‍🏫 Assistant Professor</div>
+        <div class="badge">📍 Pune, Maharashtra</div>
+      </div>
+    </div>
+    <div class="info-box">
+      <h2>Prof. Radhika Balmuri</h2>
+      <h3>Assistant Professor</h3>
+      <p><strong>Education:</strong> M.Tech in Power Electronics</p>
+      <p><strong>Date of Birth:</strong> 15 March 1985</p>
+      <p><strong>Email:</strong> radhikabalmuri@gmail.com</p>
+      <p><strong>Phone:</strong> +91-9561846477</p>
+      <p><strong>Specialization:</strong> Power Electronics</p>
+      <p><strong>Languages Known:</strong> English, Hindi, Tamil</p>
+      <p><strong>Address:</strong> Pune, Maharashtra, India</p>
+    </div>
+  </section>
+
+  <section id="personal-info" class="glass-box">
+    <h2 class="section-title">Personal Information</h2>
+    <p>Myself <strong>Radhika Balmuri</strong> from Telangana. I completed my primary education in Telangana.</p>
+    <p>I pursued my <strong>B.Tech in EEE</strong> from <strong>JNTUH</strong>, achieving <strong>First Class with Distinction</strong>.</p>
+    <p>I further completed <strong>M.Tech in Power Electronics</strong> from <strong>JNTUH</strong>.</p>
+    <p>After recovering from a spinal injury, I worked in MIT.ADT admissions for 2 years, then joined JSCOE in Sept 2024 as Assistant Professor.</p>
+  </section>
+
+  <section id="certifications" class="glass-box">
+    <h2 class="section-title">Certifications</h2>
+    <div class="certifications-list">
+      <div class="cert-card" onclick="showImage('iot')">
+        ✅ <strong>Introduction to Internet of Things</strong><br><small>(NPTEL-AICTE FDP Jan-Apr 2024)</small>
+      </div>
+      <div class="cert-card" onclick="showImage('nptel1')">
+        ☁ <strong>Cloud Computing</strong><br><small>(NPTEL Elite Jan-Apr 2025)</small>
+      </div>
+    </div>
+  </section>
+
+  <section id="subjects" class="glass-box">
+    <h2 class="section-title">Teaching Subjects</h2>
+    <div class="subjects-list">
+      <div class="subject-card">🌐 IoT (Internet of Things) – Third Year Students</div>
+      <div class="subject-card">🔧 Embedded Systems</div>
+      <div class="subject-card">⚡ Power Electronics</div>
+      <div class="subject-card">🌀 Electrical Machines</div>
+      <div class="subject-card">
+        <a href="#" target="_blank">📘 Notes and Lectures</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="glass-box contact-section">
+    <h2 class="section-title">Contact</h2>
+    <div class="info"><i class="fas fa-phone"></i> +91-9561846477</div>
+    <div class="info"><i class="fas fa-envelope"></i> <a href="mailto:radhikabalmuri@gmail.com">radhikabalmuri@gmail.com</a></div>
+    <div class="info"><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/radhikabalmuri" target="_blank">LinkedIn Profile</a></div>
+  </section>
+
+  <div id="imagePopup" class="popup" onclick="hideImage()">
+    <img id="popupImage" src="" alt="Certificate">
+  </div>
+
+  <a href="https://linkedin.com/in/radhikabalmuri" class="float-button" target="_blank">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    function showImage(cert) {
+      const popup = document.getElementById("imagePopup");
+      const img = document.getElementById("popupImage");
+      if(cert === "iot") {
+        img.src = "iot.jpg";
+      } else if(cert === "nptel1") {
+        img.src = "nptel1.jpg";
+      }
+      popup.style.display = "flex";
+    }
+
+    function hideImage() {
+      document.getElementById("imagePopup").style.display = "none";
+    }
+  </script>
+</body>
+</html>

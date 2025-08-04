@@ -1,0 +1,63 @@
+/* Header */
+.department-header {
+  background-color: #003366;
+  color: white;
+  text-align: center;
+  padding: 25px 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Navigation Bar */
+.navbar {
+  background-color: #800020;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+/* Hero Home Section */
+.home-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background-color: #f2f2f2;
+}
+
+.image-box img {
+  max-width: 400px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin-right: 40px;
+}
+
+.info-box {
+  max-width: 500px;
+}
+
+.info-box h2 {
+  font-size: 32px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.info-box h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #800020;
+}
+
+.info-box p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
